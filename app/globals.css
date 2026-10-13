@@ -1,49 +1,41 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Brand, taken from the strategic model */
+  --color-brand: #1a3a8f;
+  --color-brand-dark: #122970;
+  --color-brand-tint: #ebf0fb;
+  --color-brand-tint-strong: #d6e2f7;
+
+  /* Surfaces and text */
+  --color-background: #ffffff;
+  --color-surface: #fafafa;
+  --color-border: #f0f0f0;
+  --color-heading: #111827;
+  --color-body: #374151;
+  --color-muted: #9ca3af;
+  --color-muted-dark: #6b7280;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html {
-  height: 100%;
+* {
+  box-sizing: border-box;
 }
 
 html,
 body {
+  margin: 0;
+  padding: 0;
   max-width: 100vw;
   overflow-x: hidden;
 }
 
 body {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  background: var(--color-background);
+  color: var(--color-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
 }
 
 a {
   color: inherit;
   text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
 }
