@@ -1,0 +1,110 @@
+/*
+ * Foundation styling for the SubscriptionForm ported from slimkat-media.
+ * Keeps the joined input and button control, rebuilt on the Foundation
+ * tokens in app/globals.css since this repo has no Tailwind.
+ */
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 26rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  margin-bottom: 0.375rem;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-muted-dark);
+  text-align: left;
+}
+
+.inputRow {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.input {
+  flex-grow: 1;
+  min-width: 0;
+  padding: 0.625rem 0.75rem;
+  color: var(--color-body);
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-right: 0;
+  border-radius: 4px 0 0 4px;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.9375rem;
+}
+
+.input::placeholder {
+  color: var(--color-muted);
+}
+
+.input:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+}
+
+.button {
+  padding: 0.625rem 1.25rem;
+  color: #ffffff;
+  background: var(--color-brand);
+  border: 1px solid var(--color-brand);
+  border-left: 0;
+  border-radius: 0 4px 4px 0;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 120ms ease-in-out;
+}
+
+.button:hover:not(:disabled) {
+  background: var(--color-brand-dark);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+}
+
+.button:disabled {
+  color: #ffffff;
+  background: var(--color-muted);
+  border-color: var(--color-muted);
+  cursor: not-allowed;
+}
+
+.error {
+  margin-top: 0.375rem;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-error);
+  text-align: left;
+}
+
+.status {
+  margin-top: 0.5rem;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-muted-dark);
+  text-align: left;
+}
+
+.success {
+  color: var(--color-success);
+}
+
+.failure {
+  color: var(--color-error);
+}
