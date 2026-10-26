@@ -16,13 +16,21 @@
   flex-direction: column;
 }
 
+/*
+ * Visually hidden, not hidden from assistive technology. The field still
+ * has a real label for screen readers and for getByLabelText in the tests;
+ * it just does not render beside the input.
+ */
 .label {
-  margin-bottom: 0.375rem;
-  font-family: var(--font-inter), system-ui, sans-serif;
-  font-size: 0.8125rem;
-  font-weight: 500;
-  color: var(--color-muted-dark);
-  text-align: left;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
 }
 
 .inputRow {
