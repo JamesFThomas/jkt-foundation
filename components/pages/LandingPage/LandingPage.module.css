@@ -42,7 +42,7 @@
   margin: 0;
 }
 
-/* Strategic model */
+/* Strategic model section */
 
 .modelSection {
   display: flex;
@@ -52,56 +52,6 @@
   width: 100%;
   max-width: 42rem;
   padding: 0 1.5rem 4rem;
-}
-
-.model {
-  width: 100%;
-  height: auto;
-}
-
-.outerTriangle {
-  fill: var(--color-brand);
-  stroke: var(--color-brand-dark);
-  stroke-width: 1.5;
-}
-
-.innerBase {
-  fill: #ffffff;
-}
-
-.sectionUpper {
-  fill: var(--color-brand-tint);
-}
-
-.sectionLower {
-  fill: var(--color-brand-tint-strong);
-}
-
-.divider {
-  stroke: var(--color-brand);
-  stroke-width: 0.75;
-  opacity: 0.35;
-}
-
-.innerBorder {
-  fill: none;
-  stroke: var(--color-brand);
-  stroke-width: 1;
-}
-
-.bandLabel {
-  font-family: var(--font-inter), system-ui, sans-serif;
-  font-size: 13px;
-  font-weight: 500;
-  fill: #ffffff;
-  letter-spacing: 4px;
-}
-
-.pillarLabel {
-  font-family: var(--font-inter), system-ui, sans-serif;
-  font-size: 17px;
-  font-weight: 600;
-  fill: var(--color-brand);
 }
 
 /* Mission */
@@ -155,6 +105,28 @@
 }
 
 .programsBody {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--color-muted-dark);
+  margin: 0;
+  max-width: 32rem;
+}
+
+/* Newsletter */
+
+.newsletterSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  text-align: center;
+  width: 100%;
+  max-width: 42rem;
+  padding: 4rem 1.5rem;
+}
+
+.newsletterBody {
   font-family: var(--font-inter), system-ui, sans-serif;
   font-size: 1rem;
   line-height: 1.7;
