@@ -1,7 +1,4 @@
-export const SubscriptionConfirmationEmail = (
-  email: string,
-  logoContentId: string,
-) => `
+export const SubscriptionConfirmationEmail = (logoContentId: string) => `
   <div style="font-family: Arial, sans-serif; line-height: 1.6; max-width: 600px; margin: 0 auto;">
     <img
       src="cid:${logoContentId}"
@@ -12,8 +9,6 @@ export const SubscriptionConfirmationEmail = (
     <h1 style="font-size: 22px; font-weight: 600; margin: 0 0 16px 0;">
       Thank you for believing in people.
     </h1>
-
-    <p>Hi ${email},</p>
 
     <p>
       You've just joined a community built on one simple idea, that investing

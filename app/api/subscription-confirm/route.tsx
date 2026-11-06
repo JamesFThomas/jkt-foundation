@@ -27,7 +27,7 @@ export async function POST(request: NextRequest) {
       from: "James & Kayla Thomas Foundation <no-reply@jktfoundation.org>",
       to: email,
       subject: "James & Kayla Thomas Foundation: you're subscribed",
-      html: SubscriptionConfirmationEmail(email, "jktf_logo"),
+      html: SubscriptionConfirmationEmail("jktf_logo"),
       attachments: [
         {
           content: attachment,

@@ -5,11 +5,6 @@ import { SubscriptionConfirmationEmail } from "./SubscriptionConfirmationEmail";
  * In order to know their signup worked and what the Foundation is building,
  * a visitor who subscribes wants a branded confirmation email in their inbox.
  *
- * Scenario: The subscriber's address is greeted
- *   Given a subscriber email address
- *   When the template is rendered
- *   Then the greeting should address that email
- *
  * Scenario: The logo is embedded by content id
  *   Given a logo content id
  *   When the template is rendered
@@ -22,23 +17,16 @@ import { SubscriptionConfirmationEmail } from "./SubscriptionConfirmationEmail";
  */
 describe("SubscriptionConfirmationEmail", () => {
   const logoContentId = "jktf_logo";
-  const email = "subscriber@example.com";
-
-  it("greets the subscriber by their email address", () => {
-    const html = SubscriptionConfirmationEmail(email, logoContentId);
-
-    expect(html).toContain(`Hi ${email},`);
-  });
 
   it("embeds the logo by content id", () => {
-    const html = SubscriptionConfirmationEmail(email, logoContentId);
+    const html = SubscriptionConfirmationEmail(logoContentId);
 
     expect(html).toContain(`src="cid:${logoContentId}"`);
     expect(html).toContain('alt="James & Kayla Thomas Foundation"');
   });
 
   it("describes the Foundation's focus areas and signs off", () => {
-    const html = SubscriptionConfirmationEmail(email, logoContentId);
+    const html = SubscriptionConfirmationEmail(logoContentId);
 
     expect(html).toContain("media, wellness, education,");
     expect(html).toContain("With purpose,");
