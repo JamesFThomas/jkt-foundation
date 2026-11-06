@@ -86,9 +86,13 @@ export const SubscriptionForm = () => {
 
         clearForm();
 
-        // TODO: trigger the confirmation email API call. jktfoundation.org
-        // is already verified in Resend; this needs the confirmation email
-        // component and its route ported across from slimkat-media.
+        // Fired after the sheet write returns success, so a failed
+        // confirmation email never looks like a failed signup.
+        await fetch("/api/subscription-confirm", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email }),
+        });
       } else {
         console.error("Form submission failed:", result);
 
