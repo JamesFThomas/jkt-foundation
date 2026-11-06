@@ -4,8 +4,9 @@ type GoogleSheetsResponse = {
   status: "success" | "error";
 };
 
-// Routes this site's signups to their own tab in the shared spreadsheet.
-// Convention across the sites: slimkat_, foundation_, farm_.
+// Recorded against the row in the shared spreadsheet, so one tab can hold
+// every site's entries. Convention across the sites: slimkat_, foundation_,
+// farm_.
 const submissionType = "foundation_subscription";
 
 const googleSheetsEndpoint =

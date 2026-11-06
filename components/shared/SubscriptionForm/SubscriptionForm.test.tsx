@@ -54,6 +54,16 @@ function stubFetch(ok: boolean, body: object): void {
  *   Given I type a valid email and the API returns an error
  *   When I click subscribe
  *   Then an error message should appear
+ *
+ * Scenario: A confirmation email is requested after a successful signup
+ *   Given I type a valid email and the sheet write returns success
+ *   When I click subscribe
+ *   Then the confirmation email route should be called with that address
+ *
+ * Scenario: A failed signup requests no confirmation email
+ *   Given I type a valid email and the sheet write returns an error
+ *   When I click subscribe
+ *   Then the confirmation email route should not be called
  */
 describe("SubscriptionForm", () => {
   beforeEach(() => {
@@ -138,5 +148,49 @@ describe("SubscriptionForm", () => {
         screen.getByText("Something went wrong. Please try again.")
       ).toBeInTheDocument();
     });
+  });
+
+  it("requests a confirmation email after a successful signup", async () => {
+    stubFetch(true, { status: "success" });
+    render(<SubscriptionForm />);
+    await userEvent.type(
+      screen.getByPlaceholderText("Enter your email"),
+      "valid@example.com"
+    );
+    await userEvent.click(screen.getByRole("button", { name: "Subscribe" }));
+
+    await waitFor(() => {
+      const fetchMock = global.fetch as jest.Mock;
+      const confirmCall = fetchMock.mock.calls.find(([url]) =>
+        (url as string).includes("/api/subscription-confirm")
+      );
+      expect(confirmCall).toBeDefined();
+      const payload = JSON.parse(
+        (confirmCall as [string, { body: string }])[1].body
+      );
+      expect(payload.email).toBe("valid@example.com");
+    });
+  });
+
+  it("requests no confirmation email when the signup fails", async () => {
+    stubFetch(false, { status: "error" });
+    render(<SubscriptionForm />);
+    await userEvent.type(
+      screen.getByPlaceholderText("Enter your email"),
+      "valid@example.com"
+    );
+    await userEvent.click(screen.getByRole("button", { name: "Subscribe" }));
+
+    await waitFor(() => {
+      expect(
+        screen.getByText("Something went wrong. Please try again.")
+      ).toBeInTheDocument();
+    });
+
+    const fetchMock = global.fetch as jest.Mock;
+    const confirmCall = fetchMock.mock.calls.find(([url]) =>
+      (url as string).includes("/api/subscription-confirm")
+    );
+    expect(confirmCall).toBeUndefined();
   });
 });
