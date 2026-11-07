@@ -55,15 +55,10 @@ function stubFetch(ok: boolean, body: object): void {
  *   When I click subscribe
  *   Then an error message should appear
  *
- * Scenario: A confirmation email is requested after a successful signup
- *   Given I type a valid email and the sheet write returns success
+ * Scenario: The form makes one request and leaves the emails to the server
+ *   Given I type a valid email
  *   When I click subscribe
- *   Then the confirmation email route should be called with that address
- *
- * Scenario: A failed signup requests no confirmation email
- *   Given I type a valid email and the sheet write returns an error
- *   When I click subscribe
- *   Then the confirmation email route should not be called
+ *   Then only the submission request should be made from the browser
  */
 describe("SubscriptionForm", () => {
   beforeEach(() => {
@@ -150,7 +145,7 @@ describe("SubscriptionForm", () => {
     });
   });
 
-  it("requests a confirmation email after a successful signup", async () => {
+  it("makes a single request, leaving the emails to the server", async () => {
     stubFetch(true, { status: "success" });
     render(<SubscriptionForm />);
     await userEvent.type(
@@ -159,38 +154,15 @@ describe("SubscriptionForm", () => {
     );
     await userEvent.click(screen.getByRole("button", { name: "Subscribe" }));
 
-    await waitFor(() => {
-      const fetchMock = global.fetch as jest.Mock;
-      const confirmCall = fetchMock.mock.calls.find(([url]) =>
-        (url as string).includes("/api/subscription-confirm")
-      );
-      expect(confirmCall).toBeDefined();
-      const payload = JSON.parse(
-        (confirmCall as [string, { body: string }])[1].body
-      );
-      expect(payload.email).toBe("valid@example.com");
-    });
-  });
-
-  it("requests no confirmation email when the signup fails", async () => {
-    stubFetch(false, { status: "error" });
-    render(<SubscriptionForm />);
-    await userEvent.type(
-      screen.getByPlaceholderText("Enter your email"),
-      "valid@example.com"
-    );
-    await userEvent.click(screen.getByRole("button", { name: "Subscribe" }));
-
-    await waitFor(() => {
-      expect(
-        screen.getByText("Something went wrong. Please try again.")
-      ).toBeInTheDocument();
-    });
-
     const fetchMock = global.fetch as jest.Mock;
-    const confirmCall = fetchMock.mock.calls.find(([url]) =>
-      (url as string).includes("/api/subscription-confirm")
+
+    await waitFor(() => {
+      expect(fetchMock).toHaveBeenCalledTimes(1);
+    });
+    expect(fetchMock.mock.calls[0][0]).toBe("/api/subscribe");
+    const payload = JSON.parse(
+      (fetchMock.mock.calls[0] as [string, { body: string }])[1].body
     );
-    expect(confirmCall).toBeUndefined();
+    expect(payload.email).toBe("valid@example.com");
   });
 });
