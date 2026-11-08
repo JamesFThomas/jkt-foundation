@@ -116,3 +116,16 @@
 .failure {
   color: var(--color-error);
 }
+
+/*
+ * Honeypot. Positioned off screen rather than hidden, since bots skip
+ * display:none and type="hidden". The input itself carries aria-hidden and
+ * tabindex -1, so a visitor can never land on it.
+ */
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}

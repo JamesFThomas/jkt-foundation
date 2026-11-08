@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 
+import { HONEYPOT_FIELD } from "@/lib/security/formGuards";
+
 import styles from "./SubscriptionForm.module.css";
 
 export const SubscriptionForm = () => {
@@ -12,8 +14,12 @@ export const SubscriptionForm = () => {
   });
 
   const [submitStatus, setSubmitStatus] = useState<
-    "idle" | "success" | "error" | "loading"
+    "idle" | "success" | "error" | "loading" | "rateLimited"
   >("idle");
+
+  // Carries the honeypot value so it travels with the submission. A visitor
+  // never reaches the input, so this stays empty for them.
+  const [honeypot, setHoneypot] = useState("");
 
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -72,8 +78,20 @@ export const SubscriptionForm = () => {
       const response = await fetch("/api/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, [HONEYPOT_FIELD]: honeypot }),
       });
+
+      // Status before body: a blocked request is answered by the edge with a
+      // body that is not JSON, so parsing first would throw and the visitor
+      // would see the generic error rather than the real reason. Nothing is
+      // cleared, so retrying costs them no retyping.
+      if (response.status === 429) {
+        setSubmitStatus("rateLimited");
+
+        resetSubmitStatus();
+
+        return;
+      }
 
       const result = await response.json();
 
@@ -131,6 +149,22 @@ export const SubscriptionForm = () => {
             Subscribe
           </button>
         </div>
+        {/*
+          Honeypot. A visitor never sees or reaches it, so a value means the
+          submission came from something that read the DOM and filled every
+          field it found.
+        */}
+        <input
+          type="text"
+          name={HONEYPOT_FIELD}
+          className={styles.honeypot}
+          value={honeypot}
+          onChange={(e) => setHoneypot(e.target.value)}
+          tabIndex={-1}
+          autoComplete="off"
+          aria-hidden="true"
+        />
+
         <div id="email-error-container">
           {touched.email && emailError && (
             <p className={styles.error}>{emailError}</p>
@@ -151,6 +185,12 @@ export const SubscriptionForm = () => {
       {submitStatus === "error" && (
         <p className={`${styles.status} ${styles.failure}`}>
           Something went wrong. Please try again.
+        </p>
+      )}
+
+      {submitStatus === "rateLimited" && (
+        <p className={`${styles.status} ${styles.failure}`}>
+          Too many attempts. Please wait a few minutes and try again.
         </p>
       )}
     </div>
