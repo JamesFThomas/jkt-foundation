@@ -22,7 +22,7 @@ export const LandingPage = () => {
         {/* Strategic Model */}
         <section className={styles.modelSection}>
           <div className={styles.modelInner}>
-            <h2 className={styles.sectionLabel}>How We Invest in People</h2>
+            <h2 className={styles.sectionLabel}>Our Model</h2>
             <StrategicModel />
           </div>
         </section>
@@ -41,14 +41,13 @@ export const LandingPage = () => {
           </p>
         </section>
 
-        {/* Programs */}
-        <section className={styles.programsSection}>
-          <h2 className={styles.programsTitle}>
-            We are actively developing our inaugural programs.
-          </h2>
-          <p className={styles.programsBody}>
-            Programming across all four focus areas is in development. Check
-            back soon for ways to get involved.
+        {/* Progress */}
+        <section className={styles.progressSection}>
+          <h2 className={styles.progressTitle}>Our Progress</h2>
+          <p className={styles.progressBody}>
+            The IRS granted the Foundation tax exempt status under Section
+            501(c)(3), which means gifts to the Foundation are tax deductible to
+            the full extent the law allows.
           </p>
         </section>
 
@@ -56,7 +55,7 @@ export const LandingPage = () => {
         <section className={styles.newsletterSection}>
           <h2 className={styles.sectionLabel}>Stay Updated</h2>
           <p className={styles.newsletterBody}>
-            Leave your email and we will let you know when programs open.
+            Sign up to stay informed about upcoming programs and events.
           </p>
           <SubscriptionForm />
         </section>
