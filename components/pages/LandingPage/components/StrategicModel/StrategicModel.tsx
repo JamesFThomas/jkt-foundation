@@ -3,140 +3,76 @@ import styles from "./StrategicModel.module.css";
 export const StrategicModel = () => (
   <svg
     width="100%"
-    viewBox="0 0 780 640"
+    viewBox="0 0 480 480"
     role="img"
     aria-label="JKTF Strategic Model"
     className={styles.model}
   >
     <title>JKTF Strategic Model</title>
     <desc>
-      Triangle with royal blue outer bands labeled VOICE, EDUCATION,
-      SCHOLARSHIP. Inner triangle divided into four light blue sections: Media,
-      Wellness, Community, Education.
+      Royal blue ring labeled VOICE, EDUCATION, SCHOLARSHIP around a light blue
+      band divided into four focus areas: Media, Wellness, Community,
+      Education. The centre reads INVESTING IN PEOPLE.
     </desc>
 
     <defs>
-      <clipPath id="innerClip">
-        <polygon points="390,110 160,510 620,510" />
-      </clipPath>
+      <path id="voiceArc" d="M41,333 A220,220 0 0 1 221,21" fill="none" />
+      <path id="educationArc" d="M259,21 A220,220 0 0 1 439,333" fill="none" />
+      <path
+        id="scholarshipArc"
+        d="M60,366 A220,220 0 0 0 420,366"
+        fill="none"
+      />
     </defs>
 
-    {/* Outer triangle */}
-    <polygon points="390,30 80,570 700,570" className={styles.outerTriangle} />
+    {/* Focus area band */}
+    <circle cx="240" cy="240" r="142" className={styles.band} />
 
-    {/* Inner triangle white base */}
-    <polygon points="390,110 160,510 620,510" className={styles.innerBase} />
+    {/* Dividers, running the full depth of the band */}
+    <line x1="240" y1="40" x2="240" y2="156" className={styles.divider} />
+    <line x1="324" y1="240" x2="440" y2="240" className={styles.divider} />
+    <line x1="240" y1="324" x2="240" y2="440" className={styles.divider} />
+    <line x1="40" y1="240" x2="156" y2="240" className={styles.divider} />
 
-    {/* Four inner sections */}
-    <polygon
-      points="390,110 236,377 390,377"
-      clipPath="url(#innerClip)"
-      className={styles.sectionUpper}
-    />
-    <polygon
-      points="390,110 390,377 544,377"
-      clipPath="url(#innerClip)"
-      className={styles.sectionUpper}
-    />
-    <polygon
-      points="236,377 160,510 390,510 390,377"
-      clipPath="url(#innerClip)"
-      className={styles.sectionLower}
-    />
-    <polygon
-      points="390,377 390,510 620,510 544,377"
-      clipPath="url(#innerClip)"
-      className={styles.sectionLower}
-    />
+    {/* Centre */}
+    <circle cx="240" cy="240" r="84" className={styles.core} />
 
-    {/* Dividing lines */}
-    <line
-      x1="390"
-      y1="110"
-      x2="390"
-      y2="510"
-      clipPath="url(#innerClip)"
-      className={styles.divider}
-    />
-    <line
-      x1="236"
-      y1="377"
-      x2="544"
-      y2="377"
-      clipPath="url(#innerClip)"
-      className={styles.divider}
-    />
+    {/* Outer ring */}
+    <circle cx="240" cy="240" r="220" className={styles.outerRing} />
 
-    {/* Inner triangle border */}
-    <polygon points="390,110 160,510 620,510" className={styles.innerBorder} />
-
-    {/* Outer band labels */}
-    <text
-      x="252"
-      y="305"
-      textAnchor="middle"
-      dominantBaseline="central"
-      transform="rotate(-58,252,305)"
-      className={styles.bandLabel}
-    >
-      VOICE
+    {/* Outer ring labels */}
+    <text className={styles.bandLabel}>
+      <textPath href="#voiceArc" startOffset="50%">VOICE</textPath>
     </text>
-    <text
-      x="528"
-      y="305"
-      textAnchor="middle"
-      dominantBaseline="central"
-      transform="rotate(58,528,305)"
-      className={styles.bandLabel}
-    >
-      EDUCATION
+    <text className={styles.bandLabel}>
+      <textPath href="#educationArc" startOffset="50%">EDUCATION</textPath>
     </text>
-    <text
-      x="390"
-      y="544"
-      textAnchor="middle"
-      dominantBaseline="central"
-      className={styles.bandLabel}
-    >
-      SCHOLARSHIP
+    <text className={styles.bandLabel}>
+      <textPath href="#scholarshipArc" startOffset="50%">SCHOLARSHIP</textPath>
     </text>
 
-    {/* Inner section labels */}
-    <text
-      x="334"
-      y="282"
-      textAnchor="middle"
-      dominantBaseline="central"
-      className={styles.pillarLabel}
-    >
+    {/* Focus area labels */}
+    <text x="140" y="140" className={styles.pillarLabel}>
       Media
     </text>
-    <text
-      x="446"
-      y="282"
-      textAnchor="middle"
-      dominantBaseline="central"
-      className={styles.pillarLabel}
-    >
+    <text x="340" y="140" className={styles.pillarLabel}>
       Wellness
     </text>
-    <text
-      x="294"
-      y="444"
-      textAnchor="middle"
-      dominantBaseline="central"
-      className={styles.pillarLabel}
-    >
+    <text x="140" y="340" className={styles.pillarLabel}>
       Community
     </text>
-    <text
-      x="486"
-      y="444"
-      textAnchor="middle"
-      dominantBaseline="central"
-      className={styles.pillarLabel}
-    >
+    <text x="340" y="340" className={styles.pillarLabel}>
       Education
+    </text>
+
+    {/* Centre label */}
+    <text x="240" y="240" className={styles.coreLabel}>
+      <tspan x="240" dy="-0.55em">
+        INVESTING
+      </tspan>
+      <tspan x="240" dy="1.5em">
+        IN PEOPLE
+      </tspan>
     </text>
   </svg>
 );

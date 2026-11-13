@@ -21,8 +21,10 @@ export const LandingPage = () => {
 
         {/* Strategic Model */}
         <section className={styles.modelSection}>
-          <h2 className={styles.sectionLabel}>How We Invest in People</h2>
-          <StrategicModel />
+          <div className={styles.modelInner}>
+            <h2 className={styles.sectionLabel}>How We Invest in People</h2>
+            <StrategicModel />
+          </div>
         </section>
 
         {/* Mission */}

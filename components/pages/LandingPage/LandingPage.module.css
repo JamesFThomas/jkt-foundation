@@ -18,7 +18,7 @@
   display: flex;
   flex-direction: column;
   text-align: center;
-  padding: 3.5rem 1.5rem 2.5rem;
+  padding: 3.5rem 1.5rem 3rem;
   max-width: 42rem;
   width: 100%;
 }
@@ -42,16 +42,32 @@
   margin: 0;
 }
 
+/* Shared alternating band, used by every other section */
+
+.sectionBand {
+  width: 100%;
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
 /* Strategic model section */
 
 .modelSection {
+  composes: sectionBand;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem 1.5rem;
+}
+
+.modelInner {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.75rem;
   width: 100%;
-  max-width: 42rem;
-  padding: 0 1.5rem 4rem;
+  max-width: 39rem;
 }
 
 /* Mission */
@@ -63,7 +79,7 @@
   text-align: center;
   width: 100%;
   max-width: 48rem;
-  padding: 0 1.5rem 4rem;
+  padding: 4rem 1.5rem;
 }
 
 .missionBody {
@@ -81,15 +97,13 @@
 /* Programs */
 
 .programsSection {
+  composes: sectionBand;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1.5rem;
   text-align: center;
-  width: 100%;
   padding: 4rem 1.5rem;
-  background: var(--color-surface);
-  border-top: 1px solid var(--color-border);
 }
 
 .programsTitle {
