@@ -5,7 +5,7 @@ import { LandingPage } from "./LandingPage";
  * Story: Visitor lands on the Foundation site
  * In order to learn what the Foundation does and keep in touch,
  * a visitor wants to see the mark, the strategic model, the mission,
- * where programs stand, and a way to leave their email.
+ * where the Foundation stands, and a way to leave their email.
  *
  * Scenario: The Foundation mark is shown
  *   Given I visit the landing page
@@ -22,12 +22,12 @@ import { LandingPage } from "./LandingPage";
  *   When the page renders
  *   Then I should see the mission section
  *
- * Scenario: Programs are described as in development
+ * Scenario: Tax exempt status is announced
  *   Given I visit the landing page
  *   When the page renders
- *   Then I should be told programming is still being developed
+ *   Then I should be told the Foundation is a 501(c)(3)
  *
- * Scenario: A visitor can sign up for updates
+ * Scenario: A visitor can sign up for program updates
  *   Given I visit the landing page
  *   When the page renders
  *   Then I should see the subscription form
@@ -44,7 +44,7 @@ describe("LandingPage", () => {
   it("shows the strategic model under its heading", () => {
     render(<LandingPage />);
 
-    expect(screen.getByText("How We Invest in People")).toBeInTheDocument();
+    expect(screen.getByText("Our Model")).toBeInTheDocument();
     expect(
       screen.getByRole("img", { name: "JKTF Strategic Model" })
     ).toBeInTheDocument();
@@ -59,15 +59,16 @@ describe("LandingPage", () => {
     ).toBeInTheDocument();
   });
 
-  it("describes programs as in development", () => {
+  it("announces tax exempt status", () => {
     render(<LandingPage />);
 
+    expect(screen.getByText("Our Progress")).toBeInTheDocument();
     expect(
-      screen.getByText(/actively developing our inaugural programs/)
+      screen.getByText(/tax exempt status under Section 501\(c\)\(3\)/)
     ).toBeInTheDocument();
   });
 
-  it("offers a way to sign up for updates", () => {
+  it("offers a way to sign up for program updates", () => {
     render(<LandingPage />);
 
     expect(screen.getByText("Stay Updated")).toBeInTheDocument();

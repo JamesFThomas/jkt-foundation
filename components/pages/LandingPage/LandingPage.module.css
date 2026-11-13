@@ -42,6 +42,20 @@
   margin: 0;
 }
 
+/* Shared body copy, used by the mission, progress and newsletter sections */
+
+.serifBody {
+  font-family: var(--font-newsreader), Georgia, serif;
+  font-size: 1.375rem;
+  font-weight: 300;
+  line-height: 1.55;
+  color: var(--color-body);
+  margin: 0;
+  max-width: 40rem;
+  margin-inline: auto;
+  text-wrap: pretty;
+}
+
 /* Shared alternating band, used by every other section */
 
 .sectionBand {
@@ -83,20 +97,12 @@
 }
 
 .missionBody {
-  font-family: var(--font-newsreader), Georgia, serif;
-  font-size: 1.375rem;
-  font-weight: 300;
-  line-height: 1.55;
-  color: var(--color-body);
-  margin: 0;
-  max-width: 40rem;
-  margin-inline: auto;
-  text-wrap: pretty;
+  composes: serifBody;
 }
 
-/* Programs */
+/* Progress */
 
-.programsSection {
+.progressSection {
   composes: sectionBand;
   display: flex;
   flex-direction: column;
@@ -106,7 +112,7 @@
   padding: 4rem 1.5rem;
 }
 
-.programsTitle {
+.progressTitle {
   font-family: var(--font-newsreader), Georgia, serif;
   font-size: 1.625rem;
   font-weight: 500;
@@ -118,13 +124,8 @@
   text-wrap: balance;
 }
 
-.programsBody {
-  font-family: var(--font-inter), system-ui, sans-serif;
-  font-size: 1rem;
-  line-height: 1.7;
-  color: var(--color-muted-dark);
-  margin: 0;
-  max-width: 32rem;
+.progressBody {
+  composes: serifBody;
 }
 
 /* Newsletter */
@@ -141,10 +142,5 @@
 }
 
 .newsletterBody {
-  font-family: var(--font-inter), system-ui, sans-serif;
-  font-size: 1rem;
-  line-height: 1.7;
-  color: var(--color-muted-dark);
-  margin: 0;
-  max-width: 32rem;
+  composes: serifBody;
 }
