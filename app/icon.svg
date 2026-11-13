@@ -4,19 +4,19 @@
   <!-- Ground, so the white quadrants hold their shape on a dark tab bar -->
   <rect x="0" y="0" width="120" height="120" fill="#ffffff"/>
 
-  <!-- Top-left: J, black fill -->
-  <rect x="1" y="1" width="57" height="57" fill="#000000"/>
+  <!-- Top-left: J, brand fill -->
+  <rect x="1" y="1" width="57" height="57" fill="#1a3a8f"/>
   <text x="29" y="48" text-anchor="middle" font-family="'Times New Roman', Times, serif" font-size="40" fill="#ffffff">J</text>
 
-  <!-- Top-right: K, white fill, black border -->
-  <rect x="62" y="1" width="57" height="57" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
-  <text x="90" y="48" text-anchor="middle" font-family="'Times New Roman', Times, serif" font-size="40" fill="#000000">K</text>
+  <!-- Top-right: K, white fill, brand border -->
+  <rect x="62" y="1" width="57" height="57" fill="#ffffff" stroke="#1a3a8f" stroke-width="1.5"/>
+  <text x="90" y="48" text-anchor="middle" font-family="'Times New Roman', Times, serif" font-size="40" fill="#1a3a8f">K</text>
 
-  <!-- Bottom-left: T, white fill, black border -->
-  <rect x="1" y="62" width="57" height="57" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
-  <text x="29" y="109" text-anchor="middle" font-family="'Times New Roman', Times, serif" font-size="40" fill="#000000">T</text>
+  <!-- Bottom-left: T, white fill, brand border -->
+  <rect x="1" y="62" width="57" height="57" fill="#ffffff" stroke="#1a3a8f" stroke-width="1.5"/>
+  <text x="29" y="109" text-anchor="middle" font-family="'Times New Roman', Times, serif" font-size="40" fill="#1a3a8f">T</text>
 
-  <!-- Bottom-right: F, black fill -->
-  <rect x="62" y="62" width="57" height="57" fill="#000000"/>
+  <!-- Bottom-right: F, brand fill -->
+  <rect x="62" y="62" width="57" height="57" fill="#1a3a8f"/>
   <text x="90" y="109" text-anchor="middle" font-family="'Times New Roman', Times, serif" font-size="40" fill="#ffffff">F</text>
 </svg>

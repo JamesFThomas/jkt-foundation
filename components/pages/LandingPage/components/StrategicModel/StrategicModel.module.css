@@ -5,47 +5,52 @@
   height: auto;
 }
 
-.outerTriangle {
-  fill: var(--color-brand);
-  stroke: var(--color-brand-dark);
-  stroke-width: 1.5;
+.outerRing {
+  fill: none;
+  stroke: var(--color-brand);
+  stroke-width: 40;
 }
 
-.innerBase {
-  fill: #ffffff;
-}
-
-.sectionUpper {
-  fill: var(--color-brand-tint);
-}
-
-.sectionLower {
-  fill: var(--color-brand-tint-strong);
+.band {
+  fill: none;
+  stroke: var(--color-brand-tint);
+  stroke-width: 116;
 }
 
 .divider {
-  stroke: var(--color-brand);
-  stroke-width: 0.75;
-  opacity: 0.35;
+  stroke: #ffffff;
+  stroke-width: 3;
 }
 
-.innerBorder {
-  fill: none;
-  stroke: var(--color-brand);
-  stroke-width: 1;
+.core {
+  fill: var(--color-brand);
 }
 
 .bandLabel {
   font-family: var(--font-inter), system-ui, sans-serif;
-  font-size: 13px;
-  font-weight: 500;
+  font-size: 15px;
+  font-weight: 600;
   fill: #ffffff;
-  letter-spacing: 4px;
+  letter-spacing: 3px;
+  text-anchor: middle;
+  dominant-baseline: middle;
 }
 
 .pillarLabel {
   font-family: var(--font-inter), system-ui, sans-serif;
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 600;
   fill: var(--color-brand);
+  text-anchor: middle;
+  dominant-baseline: central;
+}
+
+.coreLabel {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  fill: #ffffff;
+  letter-spacing: 1px;
+  text-anchor: middle;
+  dominant-baseline: central;
 }
