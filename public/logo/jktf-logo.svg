@@ -1,6 +1,4 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 160" width="200" height="160">
-  <rect width="200" height="160" fill="white"/>
-
   <!-- 2x2 Grid Mark -->
   <g transform="translate(52, 8)">
     <!-- J - filled -->
@@ -8,11 +6,11 @@
     <text x="23" y="34" font-family="Georgia, serif" font-size="28" font-weight="500" fill="white" text-anchor="middle">J</text>
 
     <!-- K - outlined -->
-    <rect x="50" y="0" width="46" height="46" fill="white" stroke="#1a3a8f" stroke-width="1.5"/>
+    <rect x="50" y="0" width="46" height="46" fill="none" stroke="#1a3a8f" stroke-width="1.5"/>
     <text x="73" y="34" font-family="Georgia, serif" font-size="28" font-weight="500" fill="#1a3a8f" text-anchor="middle">K</text>
 
     <!-- T - outlined -->
-    <rect x="0" y="50" width="46" height="46" fill="white" stroke="#1a3a8f" stroke-width="1.5"/>
+    <rect x="0" y="50" width="46" height="46" fill="none" stroke="#1a3a8f" stroke-width="1.5"/>
     <text x="23" y="84" font-family="Georgia, serif" font-size="28" font-weight="500" fill="#1a3a8f" text-anchor="middle">T</text>
 
     <!-- F - filled -->
